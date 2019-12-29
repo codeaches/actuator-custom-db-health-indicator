@@ -10,26 +10,23 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 @Configuration
 public class DBConfig {
 
-  @Value("${spring.smartdb.datasource.driverClassName}")
+  @Value("${smartdb.ds.driverClassName}")
   String driverClassName;
 
-  @Value("${spring.smartdb.datasource.url}")
+  @Value("${smartdb.ds.url}")
   String url;
 
-  @Value("${spring.smartdb.datasource.username}")
+  @Value("${smartdb.ds.username}")
   String username;
 
-  @Value("${spring.smartdb.datasource.password}")
+  @Value("${smartdb.ds.password}")
   String password;
 
   @Bean(name = "smartdb")
   public DataSource smartdb() {
 
-    DriverManagerDataSource ds = new DriverManagerDataSource();
+    DriverManagerDataSource ds = new DriverManagerDataSource(url, username, password);
     ds.setDriverClassName(driverClassName);
-    ds.setUsername(username);
-    ds.setPassword(password);
-    ds.setUrl(url);
     return ds;
   }
 }

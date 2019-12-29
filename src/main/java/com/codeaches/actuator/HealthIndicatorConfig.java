@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class HealthIndicatorConfig {
 
-  @Value("${spring.smartdb.datasource.validationquery}")
+  @Value("${smartdb.ds.validationquery}")
   String validationquery;
 
   @Bean("smartDBHealthIndicator")
